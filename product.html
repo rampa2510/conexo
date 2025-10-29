@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexo - India's Credit Card Encyclopedia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0e27;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(102, 126, 234, 0.3);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .star-filled {
+            color: #fbbf24;
+        }
+        
+        .star-empty {
+            color: #374151;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-premium {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #000;
+        }
+        
+        .badge-travel {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+        
+        .badge-cashback {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+        }
+        
+        .badge-rewards {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+        }
+        
+        .upvote-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .upvote-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .upvote-btn.active {
+            color: #667eea;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .hidden-section {
+            display: none;
+        }
+        
+        .active-section {
+            display: block;
+        }
+        
+        input[type="text"], input[type="search"], textarea, select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .filter-chip {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+        
+        .filter-chip:hover, .filter-chip.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: transparent;
+        }
+        
+        .comparison-table {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">C</span>
+                </div>
+                <span class="text-2xl font-bold gradient-text">CONEXO</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <button onclick="showSection('cards')" class="text-gray-300 hover:text-white transition">Cards</button>
+                <button onclick="showSection('qa')" class="text-gray-300 hover:text-white transition">Q&A</button>
+                <button onclick="showSection('compare')" class="text-gray-300 hover:text-white transition">Compare</button>
+                <button onclick="showSection('polls')" class="text-gray-300 hover:text-white transition">Polls</button>
+            </div>
+            <button class="gradient-bg px-6 py-2 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition">
+                Sign in with Google
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Search Section -->
+    <section class="pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl md:text-6xl font-black mb-6">
+                Find Your Perfect <span class="gradient-text">Credit Card</span>
+            </h1>
+            <p class="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
+                India's most comprehensive credit card encyclopedia. Compare, review, and connect with the community.
+            </p>
+            <div class="max-w-2xl mx-auto relative">
+                <input type="search" placeholder="Search for credit cards (e.g., HDFC Diners, travel cards...)" class="pr-12" id="searchInput" oninput="filterCards()">
+                <div class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-6 pb-20">
+        
+        <!-- Cards Section -->
+        <div id="cards-section" class="active-section">
+            <!-- Filters -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold mb-4">Filter by Category</h3>
+                <div class="flex flex-wrap gap-3">
+                    <button class="filter-chip active" onclick="filterCategory('all')">All Cards</button>
+                    <button class="filter-chip" onclick="filterCategory('travel')">Travel</button>
+                    <button class="filter-chip" onclick="filterCategory('cashback')">Cashback</button>
+                    <button class="filter-chip" onclick="filterCategory('rewards')">Rewards</button>
+                    <button class="filter-chip" onclick="filterCategory('premium')">Premium</button>
+                    <button class="filter-chip" onclick="filterCategory('lifestyle')">Lifestyle</button>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid md:grid-cols-4 gap-4 mb-12">
+                <div class="card p-4 text-center">
+                    <div class="text-3xl font-bold gradient-text">247</div>
+                    <div class="text-sm text-gray-400">Total Cards</div>
+                </div>
+                <div class="card p-4 text-center">
+                    <div class="text-3xl font-bold gradient-text">12</div>
+                    <div class="text-sm text-gray-400">New This Month</div>
+                </div>
+                <div class="card p-4 text-center">
+                    <div class="text-3xl font-bold gradient-text">1.2M</div>
+                    <div class="text-sm text-gray-400">Community Views</div>
+                </div>
+                <div class="card p-4 text-center">
+                    <div class="text-3xl font-bold gradient-text">8.4K</div>
+                    <div class="text-sm text-gray-400">Reviews</div>
+                </div>
+            </div>
+
+            <!-- Credit Cards Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="cardsGrid">
+                <!-- Card 1 -->
+                <div class="card p-6 card-item" data-category="travel premium">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge badge-premium">Premium</span>
+                                <span class="badge badge-travel">Travel</span>
+                            </div>
+                            <h3 class="text-xl font-bold">HDFC Diners Club Black</h3>
+                            <p class="text-sm text-gray-400">HDFC Bank</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="flex items-center justify-end gap-1">
+                                <span class="star-filled">★★★★★</span>
+                            </div>
+                            <p class="text-xs text-gray-400">4.8 (342 reviews)</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Annual Fee</span>
+                            <span class="font-semibold">₹10,000</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Reward Rate</span>
+                            <span class="font-semibold">3.3% on travel</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Joining Bonus</span>
+                            <span class="font-semibold">10,000 points</span>
+                        </div>
+                    </div>
+                    <button onclick="showCardDetail('hdfc-diners')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                        View Details
+                    </button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card p-6 card-item" data-category="cashback">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge badge-cashback">Cashback</span>
+                            </div>
+                            <h3 class="text-xl font-bold">Amazon Pay ICICI</h3>
+                            <p class="text-sm text-gray-400">ICICI Bank</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="flex items-center justify-end gap-1">
+                                <span class="star-filled">★★★★</span><span class="star-empty">★</span>
+                            </div>
+                            <p class="text-xs text-gray-400">4.3 (1,247 reviews)</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Annual Fee</span>
+                            <span class="font-semibold text-green-400">₹0 (Lifetime Free)</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Cashback</span>
+                            <span class="font-semibold">5% on Amazon</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Other Rewards</span>
+                            <span class="font-semibold">1% elsewhere</span>
+                        </div>
+                    </div>
+                    <button onclick="showCardDetail('amazon-icici')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                        View Details
+                    </button>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card p-6 card-item" data-category="rewards premium">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge badge-premium">Premium</span>
+                                <span class="badge badge-rewards">Rewards</span>
+                            </div>
+                            <h3 class="text-xl font-bold">SBI Card ELITE</h3>
+                            <p class="text-sm text-gray-400">State Bank of India</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="flex items-center justify-end gap-1">
+                                <span class="star-filled">★★★★</span><span class="star-empty">★</span>
+                            </div>
+                            <p class="text-xs text-gray-400">4.5 (567 reviews)</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Annual Fee</span>
+                            <span class="font-semibold">₹4,999</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Reward Points</span>
+                            <span class="font-semibold">5 per ₹100</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Lounge Access</span>
+                            <span class="font-semibold">8 per year</span>
+                        </div>
+                    </div>
+                    <button onclick="showCardDetail('sbi-elite')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                        View Details
+                    </button>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card p-6 card-item" data-category="travel">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge badge-travel">Travel</span>
+                            </div>
+                            <h3 class="text-xl font-bold">Axis Bank Magnus</h3>
+                            <p class="text-sm text-gray-400">Axis Bank</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="flex items-center justify-end gap-1">
+                                <span class="star-filled">★★★★★</span>
+                            </div>
+                            <p class="text-xs text-gray-400">4.7 (891 reviews)</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Annual Fee</span>
+                            <span class="font-semibold">₹10,000</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Miles</span>
+                            <span class="font-semibold">12 per ₹200</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Travel Benefits</span>
+                            <span class="font-semibold">Priority Pass</span>
+                        </div>
+                    </div>
+                    <button onclick="showCardDetail('axis-magnus')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                        View Details
+                    </button>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="card p-6 card-item" data-category="lifestyle">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">Lifestyle</span>
+                            </div>
+                            <h3 class="text-xl font-bold">HDFC Millennia</h3>
+                            <p class="text-sm text-gray-400">HDFC Bank</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="flex items-center justify-end gap-1">
+                                <span class="star-filled">★★★★</span><span class="star-empty">★</span>
+                            </div>
+                            <p class="text-xs text-gray-400">4.2 (1,034 reviews)</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Annual Fee</span>
+                            <span class="font-semibold">₹1,000</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Cashback</span>
+                            <span class="font-semibold">5% on select</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Online Shopping</span>
+                            <span class="font-semibold">2.5% cashback</span>
+                        </div>
+                    </div>
+                    <button onclick="showCardDetail('hdfc-millennia')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                        View Details
+                    </button>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="card p-6 card-item" data-category="cashback">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge badge-cashback">Cashback</span>
+                            </div>
+                            <h3 class="text-xl font-bold">Flipkart Axis Bank</h3>
+                            <p class="text-sm text-gray-400">Axis Bank</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="flex items-center justify-end gap-1">
+                                <span class="star-filled">★★★★</span><span class="star-empty">★</span>
+                            </div>
+                            <p class="text-xs text-gray-400">4.1 (2,341 reviews)</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Annual Fee</span>
+                            <span class="font-semibold text-green-400">₹0 (Lifetime Free)</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Flipkart Cashback</span>
+                            <span class="font-semibold">5% unlimited</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Other Spends</span>
+                            <span class="font-semibold">1.5% cashback</span>
+                        </div>
+                    </div>
+                    <button onclick="showCardDetail('flipkart-axis')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Detail Modal -->
+        <div id="card-detail" class="hidden-section">
+            <button onclick="showSection('cards')" class="mb-6 text-gray-400 hover:text-white flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back to all cards
+            </button>
+
+            <div class="card p-8">
+                <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="badge badge-premium">Premium</span>
+                            <span class="badge badge-travel">Travel</span>
+                        </div>
+                        <h1 class="text-4xl font-bold mb-2">HDFC Diners Club Black</h1>
+                        <p class="text-gray-400 mb-6">HDFC Bank</p>
+                        
+                        <div class="flex items-center gap-6 mb-6">
+                            <div>
+                                <div class="flex items-center gap-1 text-2xl">
+                                    <span class="star-filled">★★★★★</span>
+                                </div>
+                                <p class="text-sm text-gray-400">4.8 out of 5 (342 reviews)</p>
+                            </div>
+                            <div class="h-12 w-px bg-gray-700"></div>
+                            <div>
+                                <p class="text-3xl font-bold gradient-text">12.4K</p>
+                                <p class="text-sm text-gray-400">Views this month</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-4">Key Features</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-400 mt-1">✓</span>
+                                <span>Unlimited domestic and international lounge access</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-400 mt-1">✓</span>
+                                <span>10X reward points on dining and weekend shopping</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-400 mt-1">✓</span>
+                                <span>Golf privileges at over 1000 courses worldwide</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-400 mt-1">✓</span>
+                                <span>Buy 1 Get 1 movie tickets at BookMyShow</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="glass p-6 rounded-lg sticky top-24">
+                            <h3 class="text-lg font-bold mb-4">Card Details</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-sm text-gray-400">Annual Fee</p>
+                                    <p class="text-xl font-bold">₹10,000</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Joining Fee</p>
+                                    <p class="text-xl font-bold">₹10,000</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Reward Rate</p>
+                                    <p class="text-xl font-bold">3.3% on travel</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Welcome Bonus</p>
+                                    <p class="text-xl font-bold">10,000 points</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-400">Min. Income</p>
+                                    <p class="text-xl font-bold">₹18 Lakhs/year</p>
+                                </div>
+                            </div>
+                            <button class="w-full gradient-bg py-3 rounded-lg font-semibold mt-6 hover:shadow-lg transition">
+                                Compare with Others
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Section -->
+                <div class="border-t border-gray-800 pt-8">
+                    <h3 class="text-2xl font-bold mb-6">User Reviews</h3>
+                    
+                    <!-- Review Stats -->
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <div class="glass p-6 rounded-lg">
+                            <div class="text-center mb-4">
+                                <div class="text-5xl font-bold gradient-text mb-2">4.8</div>
+                                <div class="flex justify-center text-2xl mb-2">
+                                    <span class="star-filled">★★★★★</span>
+                                </div>
+                                <p class="text-gray-400">Based on 342 reviews</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <span class="text-sm w-12">5 ★</span>
+                                <div class="progress-bar flex-1">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                                <span class="text-sm text-gray-400">257</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-sm w-12">4 ★</span>
+                                <div class="progress-bar flex-1">
+                                    <div class="progress-fill" style="width: 15%"></div>
+                                </div>
+                                <span class="text-sm text-gray-400">51</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-sm w-12">3 ★</span>
+                                <div class="progress-bar flex-1">
+                                    <div class="progress-fill" style="width: 6%"></div>
+                                </div>
+                                <span class="text-sm text-gray-400">21</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-sm w-12">2 ★</span>
+                                <div class="progress-bar flex-1">
+                                    <div class="progress-fill" style="width: 3%"></div>
+                                </div>
+                                <span class="text-sm text-gray-400">9</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-sm w-12">1 ★</span>
+                                <div class="progress-bar flex-1">
+                                    <div class="progress-fill" style="width: 1%"></div>
+                                </div>
+                                <span class="text-sm text-gray-400">4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Individual Reviews -->
+                    <div class="space-y-4">
+                        <div class="glass p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <p class="font-semibold">Rajesh Kumar</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="star-filled text-sm">★★★★★</span>
+                                        <span class="text-xs text-gray-400">2 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-3">Excellent card for frequent travelers. The lounge access alone justifies the annual fee. Reward points accumulate quickly, especially on dining and weekend shopping. Customer service is also very responsive.</p>
+                            <div class="flex gap-4 text-sm text-gray-400">
+                                <button class="hover:text-white flex items-center gap-1">
+                                    <span>👍</span> Helpful (24)
+                                </button>
+                                <button class="hover:text-white">Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="glass p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <p class="font-semibold">Priya Sharma</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="star-filled text-sm">★★★★</span><span class="star-empty text-sm">★</span>
+                                        <span class="text-xs text-gray-400">1 week ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-3">Great card overall, but the annual fee is steep. Make sure you can utilize the benefits to justify the cost. The rewards program is solid and the travel perks are top-notch.</p>
+                            <div class="flex gap-4 text-sm text-gray-400">
+                                <button class="hover:text-white flex items-center gap-1">
+                                    <span>👍</span> Helpful (18)
+                                </button>
+                                <button class="hover:text-white">Reply</button>
+                            </div>
+                        </div>
+
+                        <div class="glass p-6 rounded-lg">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <p class="font-semibold">Amit Patel</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="star-filled text-sm">★★★★★</span>
+                                        <span class="text-xs text-gray-400">2 weeks ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-3">Best premium card in India hands down! Been using it for 2 years. The golf privileges and unlimited lounge access are incredible. Worth every penny of the annual fee.</p>
+                            <div class="flex gap-4 text-sm text-gray-400">
+                                <button class="hover:text-white flex items-center gap-1">
+                                    <span>👍</span> Helpful (31)
+                                </button>
+                                <button class="hover:text-white">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="w-full glass py-3 rounded-lg font-semibold mt-6 hover:border-purple-500 transition">
+                        Write a Review (Login Required)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q&A Section -->
+        <div id="qa-section" class="hidden-section">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-4xl font-bold">Community <span class="gradient-text">Q&A</span></h2>
+                <button class="gradient-bg px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    Ask Question
+                </button>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex gap-3 mb-8">
+                <button class="filter-chip active">Latest</button>
+                <button class="filter-chip">Most Voted</button>
+                <button class="filter-chip">Unanswered</button>
+                <button class="filter-chip">My Questions</button>
+            </div>
+
+            <!-- Questions List -->
+            <div class="space-y-4">
+                <!-- Question 1 -->
+                <div class="card p-6">
+                    <div class="flex gap-4">
+                        <div class="flex flex-col items-center gap-2">
+                            <button class="upvote-btn text-2xl">▲</button>
+                            <span class="text-xl font-bold gradient-text">47</span>
+                            <button class="upvote-btn text-2xl">▼</button>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 hover:text-purple-400 cursor-pointer">
+                                Which credit card is best for international travel with low forex markup?
+                            </h3>
+                            <p class="text-gray-400 mb-4">
+                                I travel internationally 3-4 times a year. Looking for a card with minimal forex charges and good travel benefits. Should I go for Axis Magnus or HDFC Diners Black?
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-3">
+                                <span class="badge badge-travel">travel</span>
+                                <span class="badge" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">forex</span>
+                                <span class="badge badge-premium">premium-cards</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-sm text-gray-400">
+                                <span>Asked by <span class="text-white">Vikram Singh</span></span>
+                                <span>•</span>
+                                <span>3 hours ago</span>
+                                <span>•</span>
+                                <span class="text-green-400">5 answers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="card p-6">
+                    <div class="flex gap-4">
+                        <div class="flex flex-col items-center gap-2">
+                            <button class="upvote-btn text-2xl active">▲</button>
+                            <span class="text-xl font-bold gradient-text">132</span>
+                            <button class="upvote-btn text-2xl">▼</button>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 hover:text-purple-400 cursor-pointer">
+                                Amazon Pay ICICI vs Flipkart Axis - Which offers better overall value?
+                            </h3>
+                            <p class="text-gray-400 mb-4">
+                                Both are lifetime free cards with good cashback. I shop equally on both platforms. Which one should I prioritize? Also, how does cashback redemption work for both?
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-3">
+                                <span class="badge badge-cashback">cashback</span>
+                                <span class="badge" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">comparison</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-sm text-gray-400">
+                                <span>Asked by <span class="text-white">Sneha Reddy</span></span>
+                                <span>•</span>
+                                <span>1 day ago</span>
+                                <span>•</span>
+                                <span class="text-green-400">12 answers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="card p-6">
+                    <div class="flex gap-4">
+                        <div class="flex flex-col items-center gap-2">
+                            <button class="upvote-btn text-2xl">▲</button>
+                            <span class="text-xl font-bold gradient-text">28</span>
+                            <button class="upvote-btn text-2xl">▼</button>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 hover:text-purple-400 cursor-pointer">
+                                How to maximize reward points on HDFC Millennia credit card?
+                            </h3>
+                            <p class="text-gray-400 mb-4">
+                                I recently got HDFC Millennia. What are the best strategies to maximize cashback and reward points? Any hidden categories that give better rewards?
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-3">
+                                <span class="badge badge-rewards">rewards</span>
+                                <span class="badge" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">tips</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-sm text-gray-400">
+                                <span>Asked by <span class="text-white">Rahul Verma</span></span>
+                                <span>•</span>
+                                <span>2 days ago</span>
+                                <span>•</span>
+                                <span class="text-green-400">8 answers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="card p-6">
+                    <div class="flex gap-4">
+                        <div class="flex flex-col items-center gap-2">
+                            <button class="upvote-btn text-2xl">▲</button>
+                            <span class="text-xl font-bold gradient-text">89</span>
+                            <button class="upvote-btn text-2xl">▼</button>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 hover:text-purple-400 cursor-pointer">
+                                Is it worth paying ₹10,000 annual fee for premium cards?
+                            </h3>
+                            <p class="text-gray-400 mb-4">
+                                Cards like Axis Magnus and HDFC Diners Black charge ₹10k+ annual fee. For someone with annual spend of ₹5-6 lakhs, does it make financial sense? Break-even analysis needed.
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-3">
+                                <span class="badge badge-premium">premium-cards</span>
+                                <span class="badge" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">fees</span>
+                                <span class="badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">advice</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-sm text-gray-400">
+                                <span>Asked by <span class="text-white">Meera Joshi</span></span>
+                                <span>•</span>
+                                <span>3 days ago</span>
+                                <span>•</span>
+                                <span class="text-green-400">15 answers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="card p-6">
+                    <div class="flex gap-4">
+                        <div class="flex flex-col items-center gap-2">
+                            <button class="upvote-btn text-2xl">▲</button>
+                            <span class="text-xl font-bold gradient-text">63</span>
+                            <button class="upvote-btn text-2xl">▼</button>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold mb-2 hover:text-purple-400 cursor-pointer">
+                                Credit card denied due to low credit score - how to improve quickly?
+                            </h3>
+                            <p class="text-gray-400 mb-4">
+                                My credit score is 680 and got rejected for SBI Card. What are the fastest ways to improve credit score? Should I start with secured credit cards?
+                            </p>
+                            <div class="flex flex-wrap gap-3 mb-3">
+                                <span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">credit-score</span>
+                                <span class="badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">advice</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-sm text-gray-400">
+                                <span>Asked by <span class="text-white">Karthik Menon</span></span>
+                                <span>•</span>
+                                <span>5 days ago</span>
+                                <span>•</span>
+                                <span class="text-green-400">9 answers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-8">
+                <button class="glass px-6 py-3 rounded-lg font-semibold hover:border-purple-500 transition">
+                    Load More Questions
+                </button>
+            </div>
+        </div>
+
+        <!-- Compare Section -->
+        <div id="compare-section" class="hidden-section">
+            <h2 class="text-4xl font-bold mb-8">Compare <span class="gradient-text">Credit Cards</span></h2>
+            
+            <div class="glass p-6 rounded-lg mb-8">
+                <p class="text-gray-400 mb-4">Select up to 3 cards to compare side-by-side</p>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <select class="text-sm">
+                        <option>HDFC Diners Club Black</option>
+                        <option>Axis Magnus</option>
+                        <option>SBI Card ELITE</option>
+                        <option>Amazon Pay ICICI</option>
+                    </select>
+                    <select class="text-sm">
+                        <option>Axis Magnus</option>
+                        <option>HDFC Diners Club Black</option>
+                        <option>SBI Card ELITE</option>
+                        <option>Amazon Pay ICICI</option>
+                    </select>
+                    <select class="text-sm">
+                        <option>SBI Card ELITE</option>
+                        <option>HDFC Diners Club Black</option>
+                        <option>Axis Magnus</option>
+                        <option>Amazon Pay ICICI</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="comparison-table">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Feature</th>
+                            <th class="text-center">
+                                <div class="font-bold mb-1">HDFC Diners Black</div>
+                                <div class="text-xs font-normal text-gray-400">HDFC Bank</div>
+                            </th>
+                            <th class="text-center">
+                                <div class="font-bold mb-1">Axis Magnus</div>
+                                <div class="text-xs font-normal text-gray-400">Axis Bank</div>
+                            </th>
+                            <th class="text-center">
+                                <div class="font-bold mb-1">SBI Card ELITE</div>
+                                <div class="text-xs font-normal text-gray-400">SBI Card</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-semibold">Annual Fee</td>
+                            <td class="text-center">₹10,000</td>
+                            <td class="text-center">₹10,000</td>
+                            <td class="text-center text-green-400">₹4,999</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Joining Fee</td>
+                            <td class="text-center">₹10,000</td>
+                            <td class="text-center">₹10,000</td>
+                            <td class="text-center text-green-400">₹4,999</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Welcome Bonus</td>
+                            <td class="text-center">10,000 points</td>
+                            <td class="text-center">25,000 miles</td>
+                            <td class="text-center">5,000 points</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Reward Rate</td>
+                            <td class="text-center">3.3% on travel</td>
+                            <td class="text-center">4.8% on travel</td>
+                            <td class="text-center">2.5% general</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Lounge Access</td>
+                            <td class="text-center text-green-400">Unlimited</td>
+                            <td class="text-center text-green-400">Unlimited</td>
+                            <td class="text-center">8 per year</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Golf Privileges</td>
+                            <td class="text-center text-green-400">✓ Yes</td>
+                            <td class="text-center">✗ No</td>
+                            <td class="text-center">✗ No</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Forex Markup</td>
+                            <td class="text-center">3.5%</td>
+                            <td class="text-center text-green-400">2.0%</td>
+                            <td class="text-center">3.5%</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Min. Income</td>
+                            <td class="text-center">₹18 Lakhs/yr</td>
+                            <td class="text-center">₹15 Lakhs/yr</td>
+                            <td class="text-center text-green-400">₹7.2 Lakhs/yr</td>
+                        </tr>
+                        <tr>
+                            <td class="font-semibold">Rating</td>
+                            <td class="text-center">
+                                <span class="star-filled">★★★★★</span> 4.8
+                            </td>
+                            <td class="text-center">
+                                <span class="star-filled">★★★★★</span> 4.7
+                            </td>
+                            <td class="text-center">
+                                <span class="star-filled">★★★★</span><span class="star-empty">★</span> 4.5
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-8 grid md:grid-cols-3 gap-6">
+                <div class="card p-6 text-center">
+                    <h3 class="font-bold text-xl mb-2">HDFC Diners Black</h3>
+                    <p class="text-sm text-gray-400 mb-4">Best for: Luxury travel & dining</p>
+                    <button class="w-full gradient-bg py-2 rounded-lg font-semibold hover:shadow-lg transition">
+                        View Details
+                    </button>
+                </div>
+                <div class="card p-6 text-center">
+                    <h3 class="font-bold text-xl mb-2">Axis Magnus</h3>
+                    <p class="text-sm text-gray-400 mb-4">Best for: Travel miles & rewards</p>
+                    <button class="w-full gradient-bg py-2 rounded-lg font-semibold hover:shadow-lg transition">
+                        View Details
+                    </button>
+                </div>
+                <div class="card p-6 text-center">
+                    <h3 class="font-bold text-xl mb-2">SBI Card ELITE</h3>
+                    <p class="text-sm text-gray-400 mb-4">Best for: Overall value</p>
+                    <button class="w-full gradient-bg py-2 rounded-lg font-semibold hover:shadow-lg transition">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Polls Section -->
+        <div id="polls-section" class="hidden-section">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-4xl font-bold">Community <span class="gradient-text">Polls</span></h2>
+                <button class="gradient-bg px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    Create Poll
+                </button>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Poll 1 -->
+                <div class="card p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Which credit card do you use the most for online shopping?</h3>
+                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Conexo Team</span> • 2,847 votes • Ends in 3 days</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>Amazon Pay ICICI</span>
+                                <span class="font-bold gradient-text">38%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 38%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">1,082 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>Flipkart Axis Bank</span>
+                                <span class="font-bold gradient-text">29%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 29%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">826 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>HDFC Millennia</span>
+                                <span class="font-bold gradient-text">21%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 21%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">598 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>Other</span>
+                                <span class="font-bold gradient-text">12%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 12%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">341 votes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poll 2 -->
+                <div class="card p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">What's your primary reason for choosing a credit card?</h3>
+                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Vikram Singh</span> • 4,523 votes • Ended 2 days ago</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>Cashback & Rewards</span>
+                                <span class="font-bold gradient-text">42%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 42%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">1,900 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>Travel Benefits</span>
+                                <span class="font-bold gradient-text">31%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 31%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">1,402 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>Lounge Access</span>
+                                <span class="font-bold gradient-text">17%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 17%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">769 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>No Annual Fee</span>
+                                <span class="font-bold gradient-text">10%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 10%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">452 votes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poll 3 -->
+                <div class="card p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Which bank offers the best premium credit cards?</h3>
+                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Sneha Reddy</span> • 3,156 votes • Ends in 5 days</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>HDFC Bank</span>
+                                <span class="font-bold gradient-text">36%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 36%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">1,136 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>Axis Bank</span>
+                                <span class="font-bold gradient-text">33%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 33%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">1,041 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>SBI Card</span>
+                                <span class="font-bold gradient-text">19%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 19%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">600 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>ICICI Bank</span>
+                                <span class="font-bold gradient-text">12%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 12%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">379 votes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poll 4 -->
+                <div class="card p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">How many credit cards do you actively use?</h3>
+                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Conexo Team</span> • 5,892 votes • Ended 1 week ago</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>1-2 cards</span>
+                                <span class="font-bold gradient-text">45%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">2,651 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>3-4 cards</span>
+                                <span class="font-bold gradient-text">32%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 32%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">1,885 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>5+ cards</span>
+                                <span class="font-bold gradient-text">15%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 15%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">884 votes</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <span>None (yet)</span>
+                                <span class="font-bold gradient-text">8%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 8%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1">472 votes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">C</span>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">CONEXO</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">India's most comprehensive credit card encyclopedia.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Explore</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">All Credit Cards</a></li>
+                        <li><a href="#" class="hover:text-white">Travel Cards</a></li>
+                        <li><a href="#" class="hover:text-white">Cashback Cards</a></li>
+                        <li><a href="#" class="hover:text-white">Premium Cards</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Community</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">Q&A Forum</a></li>
+                        <li><a href="#" class="hover:text-white">Polls</a></li>
+                        <li><a href="#" class="hover:text-white">Reviews</a></li>
+                        <li><a href="#" class="hover:text-white">Guidelines</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-gray-400 text-sm pt-8 border-t border-gray-800">
+                © 2024 Conexo. All rights reserved. Connect, Capitalise, Convert.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Section navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('[id$="-section"]').forEach(section => {
+                section.classList.remove('active-section');
+                section.classList.add('hidden-section');
+            });
+            
+            // Show selected section
+            const section = document.getElementById(sectionName + '-section');
+            if (section) {
+                section.classList.remove('hidden-section');
+                section.classList.add('active-section');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show card detail
+        function showCardDetail(cardId) {
+            document.getElementById('cards-section').classList.remove('active-section');
+            document.getElementById('cards-section').classList.add('hidden-section');
+            document.getElementById('card-detail').classList.remove('hidden-section');
+            document.getElementById('card-detail').classList.add('active-section');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Filter cards by search
+        function filterCards() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.card-item');
+            
+            cards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Filter by category
+        let currentCategory = 'all';
+        function filterCategory(category) {
+            currentCategory = category;
+            const cards = document.querySelectorAll('.card-item');
+            const chips = document.querySelectorAll('.filter-chip');
+            
+            // Update active chip
+            chips.forEach(chip => chip.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const categories = card.getAttribute('data-category');
+                    if (categories.includes(category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Upvote functionality
+        document.querySelectorAll('.upvote-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
