@@ -52,6 +52,14 @@
             box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
         }
         
+        .card img {
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover img {
+            transform: scale(1.05);
+        }
+        
         .tab-active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -209,7 +217,7 @@
                 India's most comprehensive credit card encyclopedia. Compare, review, and connect with the community.
             </p>
             <div class="max-w-2xl mx-auto relative">
-                <input type="search" placeholder="Search for credit cards (e.g., HDFC Diners, travel cards...)" class="pr-12" id="searchInput" oninput="filterCards()">
+                <input type="search" placeholder="Search for credit cards" class="pr-12" id="searchInput" oninput="filterCards()">
                 <div class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -261,6 +269,9 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="cardsGrid">
                 <!-- Card 1 -->
                 <div class="card p-6 card-item" data-category="travel premium">
+                    <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
+                        <img src="https://bankkaro.com/blog/wp-content/uploads/2022/03/hdfc-bank-indian-oil-credit-card.jpg" alt="HDFC Diners Club Black" class="w-full h-48 object-cover">
+                    </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <div class="flex items-center gap-2 mb-2">
@@ -298,6 +309,9 @@
 
                 <!-- Card 2 -->
                 <div class="card p-6 card-item" data-category="cashback">
+                    <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
+                        <img src="https://cardmaven.in/wp-content/uploads/2021/08/MakeMyTrip-ICICI-Bank-Platinum-Credit-Card.webp" alt="Amazon Pay ICICI" class="w-full h-48 object-cover">
+                    </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <div class="flex items-center gap-2 mb-2">
@@ -334,6 +348,9 @@
 
                 <!-- Card 3 -->
                 <div class="card p-6 card-item" data-category="rewards premium">
+                    <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYbJANI_5w_qq2-8N155rZLa32ewpWea0H9g&s" alt="SBI Card ELITE" class="w-full h-48 object-cover">
+                    </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <div class="flex items-center gap-2 mb-2">
@@ -371,6 +388,9 @@
 
                 <!-- Card 4 -->
                 <div class="card p-6 card-item" data-category="travel">
+                    <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
+                        <img src="https://bankkaro.com/blog/wp-content/uploads/2022/03/hdfc-bank-indian-oil-credit-card.jpg" alt="Axis Bank Magnus" class="w-full h-48 object-cover">
+                    </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <div class="flex items-center gap-2 mb-2">
@@ -407,6 +427,9 @@
 
                 <!-- Card 5 -->
                 <div class="card p-6 card-item" data-category="lifestyle">
+                    <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
+                        <img src="https://cardmaven.in/wp-content/uploads/2021/08/MakeMyTrip-ICICI-Bank-Platinum-Credit-Card.webp" alt="HDFC Millennia" class="w-full h-48 object-cover">
+                    </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <div class="flex items-center gap-2 mb-2">
@@ -443,6 +466,9 @@
 
                 <!-- Card 6 -->
                 <div class="card p-6 card-item" data-category="cashback">
+                    <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYbJANI_5w_qq2-8N155rZLa32ewpWea0H9g&s" alt="Flipkart Axis Bank" class="w-full h-48 object-cover">
+                    </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <div class="flex items-center gap-2 mb-2">
@@ -481,7 +507,7 @@
 
         <!-- Card Detail Modal -->
         <div id="card-detail" class="hidden-section">
-            <button onclick="showSection('cards')" class="mb-6 text-gray-400 hover:text-white flex items-center gap-2">
+            <button onclick="showSection('cards'); return false;" class="mb-6 text-gray-400 hover:text-white flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -489,6 +515,9 @@
             </button>
 
             <div class="card p-8">
+                <div class="mb-6 rounded-lg overflow-hidden bg-gray-900">
+                    <img src="https://bankkaro.com/blog/wp-content/uploads/2022/03/hdfc-bank-indian-oil-credit-card.jpg" alt="HDFC Diners Club Black" class="w-full max-h-80 object-contain">
+                </div>
                 <div class="grid md:grid-cols-3 gap-8 mb-8">
                     <div class="md:col-span-2">
                         <div class="flex items-center gap-3 mb-4">
@@ -1296,6 +1325,13 @@
                 section.classList.add('hidden-section');
             });
             
+            // Also hide card detail if it exists
+            const cardDetail = document.getElementById('card-detail');
+            if (cardDetail) {
+                cardDetail.classList.remove('active-section');
+                cardDetail.classList.add('hidden-section');
+            }
+            
             // Show selected section
             const section = document.getElementById(sectionName + '-section');
             if (section) {
@@ -1309,10 +1345,19 @@
 
         // Show card detail
         function showCardDetail(cardId) {
-            document.getElementById('cards-section').classList.remove('active-section');
-            document.getElementById('cards-section').classList.add('hidden-section');
-            document.getElementById('card-detail').classList.remove('hidden-section');
-            document.getElementById('card-detail').classList.add('active-section');
+            // Hide all sections
+            document.querySelectorAll('[id$="-section"]').forEach(section => {
+                section.classList.remove('active-section');
+                section.classList.add('hidden-section');
+            });
+            
+            // Show card detail
+            const cardDetail = document.getElementById('card-detail');
+            if (cardDetail) {
+                cardDetail.classList.remove('hidden-section');
+                cardDetail.classList.add('active-section');
+            }
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
