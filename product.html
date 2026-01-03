@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,37 +8,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background: #0a0e27;
             color: #fff;
             overflow-x: hidden;
         }
-        
+
         .gradient-text {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        
+
         .glass {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
@@ -45,34 +46,34 @@
             border-radius: 16px;
             transition: all 0.3s ease;
         }
-        
+
         .card:hover {
             transform: translateY(-4px);
             border-color: rgba(102, 126, 234, 0.3);
             box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
         }
-        
+
         .card img {
             transition: transform 0.3s ease;
         }
-        
+
         .card:hover img {
             transform: scale(1.05);
         }
-        
+
         .tab-active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
-        
+
         .star-filled {
             color: #fbbf24;
         }
-        
+
         .star-empty {
             color: #374151;
         }
-        
+
         .badge {
             display: inline-block;
             padding: 4px 12px;
@@ -80,61 +81,64 @@
             font-size: 12px;
             font-weight: 600;
         }
-        
+
         .badge-premium {
             background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
             color: #000;
         }
-        
+
         .badge-travel {
             background: rgba(59, 130, 246, 0.2);
             color: #60a5fa;
         }
-        
+
         .badge-cashback {
             background: rgba(34, 197, 94, 0.2);
             color: #4ade80;
         }
-        
+
         .badge-rewards {
             background: rgba(168, 85, 247, 0.2);
             color: #a855f7;
         }
-        
+
         .upvote-btn {
             transition: all 0.2s ease;
         }
-        
+
         .upvote-btn:hover {
             transform: scale(1.1);
         }
-        
+
         .upvote-btn.active {
             color: #667eea;
         }
-        
+
         .progress-bar {
             height: 8px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             overflow: hidden;
         }
-        
+
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
             transition: width 0.3s ease;
         }
-        
+
         .hidden-section {
             display: none;
         }
-        
+
         .active-section {
             display: block;
         }
-        
-        input[type="text"], input[type="search"], textarea, select {
+
+        input[type="text"],
+        input[type="search"],
+        textarea,
+        select {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
@@ -143,13 +147,15 @@
             width: 100%;
             transition: all 0.3s ease;
         }
-        
-        input:focus, textarea:focus, select:focus {
+
+        input:focus,
+        textarea:focus,
+        select:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
-        
+
         .filter-chip {
             padding: 8px 16px;
             border-radius: 20px;
@@ -159,38 +165,40 @@
             transition: all 0.2s ease;
             font-size: 14px;
         }
-        
-        .filter-chip:hover, .filter-chip.active {
+
+        .filter-chip:hover,
+        .filter-chip.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-color: transparent;
         }
-        
+
         .comparison-table {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             overflow: hidden;
         }
-        
+
         .comparison-table th {
             background: rgba(102, 126, 234, 0.1);
             padding: 16px;
             text-align: left;
             font-weight: 600;
         }
-        
+
         .comparison-table td {
             padding: 16px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 glass">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex-1"></div>
-            
+
             <!-- Centered Conexo Logo -->
             <a href="index.html" class="flex items-center space-x-3 absolute left-1/2 transform -translate-x-1/2">
                 <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center">
@@ -198,25 +206,34 @@
                 </div>
                 <span class="text-4xl font-black gradient-text">CONEXO</span>
             </a>
-            
+
             <!-- Google Sign In Icon -->
-            <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:shadow-lg transition" title="Sign in with Google">
+            <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:shadow-lg transition"
+                title="Sign in with Google">
                 <svg class="w-6 h-6" viewBox="0 0 24 24">
-                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    <path fill="#4285F4"
+                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                    <path fill="#34A853"
+                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    <path fill="#FBBC05"
+                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                    <path fill="#EA4335"
+                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                 </svg>
             </button>
         </div>
-        
+
         <!-- Secondary Nav Links -->
         <div class="border-t border-gray-800">
             <div class="max-w-7xl mx-auto px-6 py-3 flex justify-center space-x-8">
-                <button onclick="showSection('cards')" class="text-gray-300 hover:text-white transition text-sm">Cards</button>
-                <button onclick="showSection('qa')" class="text-gray-300 hover:text-white transition text-sm">Q&A</button>
-                <button onclick="showSection('compare')" class="text-gray-300 hover:text-white transition text-sm">Compare</button>
-                <button onclick="showSection('polls')" class="text-gray-300 hover:text-white transition text-sm">Polls</button>
+                <button onclick="showSection('cards')"
+                    class="text-gray-300 hover:text-white transition text-sm">Cards</button>
+                <button onclick="showSection('qa')"
+                    class="text-gray-300 hover:text-white transition text-sm">Q&A</button>
+                <button onclick="showSection('compare')"
+                    class="text-gray-300 hover:text-white transition text-sm">Compare</button>
+                <button onclick="showSection('polls')"
+                    class="text-gray-300 hover:text-white transition text-sm">Polls</button>
             </div>
         </div>
     </nav>
@@ -231,10 +248,12 @@
                 India's most comprehensive credit card encyclopedia. Compare, review, and connect with the community.
             </p>
             <div class="max-w-2xl mx-auto relative">
-                <input type="search" placeholder="Search for credit cards" class="pr-12" id="searchInput" oninput="filterCards()">
+                <input type="search" placeholder="Search for credit cards" class="pr-12" id="searchInput"
+                    oninput="filterCards()">
                 <div class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </div>
             </div>
@@ -243,7 +262,7 @@
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-6 pb-20">
-        
+
         <!-- Cards Section -->
         <div id="cards-section" class="active-section">
             <!-- Filters -->
@@ -284,7 +303,8 @@
                 <!-- Card 1 -->
                 <div class="card p-6 card-item" data-category="travel premium">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://www.cardexpert.in/wp-content/uploads/2018/05/hdfc_diners_clubmiles.jpg" alt="HDFC Diners Club Black" class="w-full h-48 object-cover">
+                        <img src="https://www.cardexpert.in/wp-content/uploads/2018/05/hdfc_diners_clubmiles.jpg"
+                            alt="HDFC Diners Club Black" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -316,7 +336,8 @@
                             <span class="font-semibold">10,000 points</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('hdfc-diners')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('hdfc-diners')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -324,7 +345,8 @@
                 <!-- Card 2 -->
                 <div class="card p-6 card-item" data-category="cashback">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://m.media-amazon.com/images/G/31/img18/AmazonPay/Affordability/CBCC/Amazoncard_Final._CB570101839_.jpg" alt="Amazon Pay ICICI" class="w-full h-48 object-cover">
+                        <img src="https://m.media-amazon.com/images/G/31/img18/AmazonPay/Affordability/CBCC/Amazoncard_Final._CB570101839_.jpg"
+                            alt="Amazon Pay ICICI" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -355,7 +377,8 @@
                             <span class="font-semibold">1% elsewhere</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('amazon-icici')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('amazon-icici')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -363,7 +386,8 @@
                 <!-- Card 3 -->
                 <div class="card p-6 card-item" data-category="rewards premium">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYbJANI_5w_qq2-8N155rZLa32ewpWea0H9g&s" alt="SBI Card ELITE" class="w-full h-48 object-cover">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYbJANI_5w_qq2-8N155rZLa32ewpWea0H9g&s"
+                            alt="SBI Card ELITE" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -395,7 +419,8 @@
                             <span class="font-semibold">8 per year</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('sbi-elite')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('sbi-elite')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -403,7 +428,8 @@
                 <!-- Card 4 -->
                 <div class="card p-6 card-item" data-category="travel">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://www.cardexpert.in/wp-content/uploads/2022/05/axis_magnus_credit_card.jpg" alt="Axis Bank Magnus" class="w-full h-48 object-cover">
+                        <img src="https://www.cardexpert.in/wp-content/uploads/2022/05/axis_magnus_credit_card.jpg"
+                            alt="Axis Bank Magnus" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -434,7 +460,8 @@
                             <span class="font-semibold">Priority Pass</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('axis-magnus')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('axis-magnus')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -442,7 +469,8 @@
                 <!-- Card 5 -->
                 <div class="card p-6 card-item" data-category="cashback">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://static.bankbazaar.com/images/india/infographic/flipkart-axis-credit-card.webp" alt="Flipkart Axis Bank" class="w-full h-48 object-cover">
+                        <img src="https://static.bankbazaar.com/images/india/infographic/flipkart-axis-credit-card.webp"
+                            alt="Flipkart Axis Bank" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -473,7 +501,8 @@
                             <span class="font-semibold">1.5% cashback</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('flipkart-axis')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('flipkart-axis')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -481,7 +510,8 @@
                 <!-- Card 7 -->
                 <div class="card p-6 card-item" data-category="premium rewards">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://v.hdfcbank.com/content/dam/hdfc-aem-microsites/regalia-gold/gold-new/card01.svg" alt="HDFC Regalia Gold" class="w-full h-48 object-cover">
+                        <img src="https://v.hdfcbank.com/content/dam/hdfc-aem-microsites/regalia-gold/gold-new/card01.svg"
+                            alt="HDFC Regalia Gold" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -513,7 +543,8 @@
                             <span class="font-semibold">12 per year</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('hdfc-regalia-gold')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('hdfc-regalia-gold')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -521,7 +552,8 @@
                 <!-- Card 8 -->
                 <div class="card p-6 card-item" data-category="premium travel">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://www.paisabazaar.com/wp-content/uploads/2015/11/Axis-Bank-Select-Credit-Card.png" alt="Axis Bank SELECT" class="w-full h-48 object-cover">
+                        <img src="https://www.paisabazaar.com/wp-content/uploads/2015/11/Axis-Bank-Select-Credit-Card.png"
+                            alt="Axis Bank SELECT" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -553,7 +585,8 @@
                             <span class="font-semibold">Lounge Access</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('axis-select')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('axis-select')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -561,7 +594,8 @@
                 <!-- Card 9 -->
                 <div class="card p-6 card-item" data-category="rewards">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://www.paisabazaar.com/wp-content/uploads/2019/07/SBI-Card-Prime-1.png" alt="SBI Prime" class="w-full h-48 object-cover">
+                        <img src="https://www.paisabazaar.com/wp-content/uploads/2019/07/SBI-Card-Prime-1.png"
+                            alt="SBI Prime" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -592,7 +626,8 @@
                             <span class="font-semibold">1% waiver</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('sbi-prime')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('sbi-prime')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -600,7 +635,8 @@
                 <!-- Card 10 -->
                 <div class="card p-6 card-item" data-category="rewards premium">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://icm.aexp-static.com/Internet/internationalcardshop/en_in/images/cards/Membership_Rewards_Card.png" alt="Amex Membership Rewards" class="w-full h-48 object-cover">
+                        <img src="https://icm.aexp-static.com/Internet/internationalcardshop/en_in/images/cards/Membership_Rewards_Card.png"
+                            alt="Amex Membership Rewards" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -632,7 +668,8 @@
                             <span class="font-semibold">4,000 points</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('amex-membership')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('amex-membership')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -640,12 +677,14 @@
                 <!-- Card 11 -->
                 <div class="card p-6 card-item" data-category="lifestyle cashback">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://www.paisabazaar.com/wp-content/uploads/2023/07/Swiggy-HDFC-Bank-Credit-Card.png" alt="HDFC Swiggy" class="w-full h-48 object-cover">
+                        <img src="https://www.paisabazaar.com/wp-content/uploads/2023/07/Swiggy-HDFC-Bank-Credit-Card.png"
+                            alt="HDFC Swiggy" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <div class="flex items-center gap-2 mb-2">
-                                <span class="badge" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">Lifestyle</span>
+                                <span class="badge"
+                                    style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">Lifestyle</span>
                                 <span class="badge badge-cashback">Cashback</span>
                             </div>
                             <h3 class="text-xl font-bold">HDFC Swiggy</h3>
@@ -672,7 +711,8 @@
                             <span class="font-semibold">3 months free</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('hdfc-swiggy')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('hdfc-swiggy')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -680,7 +720,8 @@
                 <!-- Card 13 -->
                 <div class="card p-6 card-item" data-category="premium travel">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://www.cardexpert.in/wp-content/uploads/2021/10/hdfc-infinia-metal-edition.jpg" alt="HDFC Infinia" class="w-full h-48 object-cover">
+                        <img src="https://www.cardexpert.in/wp-content/uploads/2021/10/hdfc-infinia-metal-edition.jpg"
+                            alt="HDFC Infinia" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -712,7 +753,8 @@
                             <span class="font-semibold">Unlimited lounge</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('hdfc-infinia')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('hdfc-infinia')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -720,12 +762,14 @@
                 <!-- Card 14 -->
                 <div class="card p-6 card-item" data-category="lifestyle">
                     <div class="mb-4 rounded-lg overflow-hidden bg-gray-900">
-                        <img src="https://campaigns.icicibank.com/credit-card/coralCreditCard/imagesinst/Asset-1.webp" alt="ICICI Coral" class="w-full h-48 object-cover">
+                        <img src="https://campaigns.icicibank.com/credit-card/coralCreditCard/imagesinst/Asset-1.webp"
+                            alt="ICICI Coral" class="w-full h-48 object-cover">
                     </div>
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <div class="flex items-center gap-2 mb-2">
-                                <span class="badge" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">Lifestyle</span>
+                                <span class="badge"
+                                    style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">Lifestyle</span>
                             </div>
                             <h3 class="text-xl font-bold">ICICI Coral</h3>
                             <p class="text-sm text-gray-400">ICICI Bank</p>
@@ -751,7 +795,8 @@
                             <span class="font-semibold">2 per quarter</span>
                         </div>
                     </div>
-                    <button onclick="showCardDetail('icici-coral')" class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
+                    <button onclick="showCardDetail('icici-coral')"
+                        class="w-full gradient-bg py-3 rounded-lg font-semibold hover:shadow-lg transition">
                         View Details
                     </button>
                 </div>
@@ -760,7 +805,8 @@
 
         <!-- Card Detail Modal -->
         <div id="card-detail" class="hidden-section">
-            <button onclick="showSection('cards'); return false;" class="mb-6 text-gray-400 hover:text-white flex items-center gap-2">
+            <button onclick="showSection('cards'); return false;"
+                class="mb-6 text-gray-400 hover:text-white flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -769,49 +815,33 @@
 
             <div class="card p-8">
                 <div class="mb-6 rounded-lg overflow-hidden bg-gray-900">
-                    <img src="https://bankkaro.com/blog/wp-content/uploads/2022/03/hdfc-bank-indian-oil-credit-card.jpg" alt="HDFC Diners Club Black" class="w-full max-h-80 object-contain">
+                    <img id="detail-card-image" src="" alt="" class="w-full max-h-80 object-contain">
                 </div>
                 <div class="grid md:grid-cols-3 gap-8 mb-8">
                     <div class="md:col-span-2">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="badge badge-premium">Premium</span>
-                            <span class="badge badge-travel">Travel</span>
+                        <div id="detail-badges" class="flex items-center gap-3 mb-4">
+                            <!-- Badges will be populated dynamically -->
                         </div>
-                        <h1 class="text-4xl font-bold mb-2">HDFC Diners Club Black</h1>
-                        <p class="text-gray-400 mb-6">HDFC Bank</p>
-                        
+                        <h1 id="detail-card-name" class="text-4xl font-bold mb-2"></h1>
+                        <p id="detail-bank-name" class="text-gray-400 mb-6"></p>
+
                         <div class="flex items-center gap-6 mb-6">
                             <div>
                                 <div class="flex items-center gap-1 text-2xl">
-                                    <span class="star-filled">★★★★★</span>
+                                    <span id="detail-stars" class="star-filled"></span>
                                 </div>
-                                <p class="text-sm text-gray-400">4.8 out of 5 (342 reviews)</p>
+                                <p id="detail-rating-text" class="text-sm text-gray-400"></p>
                             </div>
                             <div class="h-12 w-px bg-gray-700"></div>
                             <div>
-                                <p class="text-3xl font-bold gradient-text">12.4K</p>
+                                <p id="detail-views" class="text-3xl font-bold gradient-text"></p>
                                 <p class="text-sm text-gray-400">Views this month</p>
                             </div>
                         </div>
 
                         <h3 class="text-xl font-bold mb-4">Key Features</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li class="flex items-start gap-2">
-                                <span class="text-green-400 mt-1">✓</span>
-                                <span>Unlimited domestic and international lounge access</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-green-400 mt-1">✓</span>
-                                <span>10X reward points on dining and weekend shopping</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-green-400 mt-1">✓</span>
-                                <span>Golf privileges at over 1000 courses worldwide</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-green-400 mt-1">✓</span>
-                                <span>Buy 1 Get 1 movie tickets at BookMyShow</span>
-                            </li>
+                        <ul id="detail-features" class="space-y-2 text-gray-300">
+                            <!-- Features will be populated dynamically -->
                         </ul>
                     </div>
 
@@ -821,26 +851,27 @@
                             <div class="space-y-4">
                                 <div>
                                     <p class="text-sm text-gray-400">Annual Fee</p>
-                                    <p class="text-xl font-bold">₹10,000</p>
+                                    <p id="detail-annual-fee" class="text-xl font-bold"></p>
                                 </div>
                                 <div>
                                     <p class="text-sm text-gray-400">Joining Fee</p>
-                                    <p class="text-xl font-bold">₹10,000</p>
+                                    <p id="detail-joining-fee" class="text-xl font-bold"></p>
                                 </div>
                                 <div>
                                     <p class="text-sm text-gray-400">Reward Rate</p>
-                                    <p class="text-xl font-bold">3.3% on travel</p>
+                                    <p id="detail-reward-rate" class="text-xl font-bold"></p>
                                 </div>
                                 <div>
                                     <p class="text-sm text-gray-400">Welcome Bonus</p>
-                                    <p class="text-xl font-bold">10,000 points</p>
+                                    <p id="detail-welcome-bonus" class="text-xl font-bold"></p>
                                 </div>
                                 <div>
                                     <p class="text-sm text-gray-400">Min. Income</p>
-                                    <p class="text-xl font-bold">₹18 Lakhs/year</p>
+                                    <p id="detail-min-income" class="text-xl font-bold"></p>
                                 </div>
                             </div>
-                            <button class="w-full gradient-bg py-3 rounded-lg font-semibold mt-6 hover:shadow-lg transition">
+                            <button
+                                class="w-full gradient-bg py-3 rounded-lg font-semibold mt-6 hover:shadow-lg transition">
                                 Compare with Others
                             </button>
                         </div>
@@ -850,7 +881,7 @@
                 <!-- Reviews Section -->
                 <div class="border-t border-gray-800 pt-8">
                     <h3 class="text-2xl font-bold mb-6">User Reviews</h3>
-                    
+
                     <!-- Review Stats -->
                     <div class="grid md:grid-cols-2 gap-8 mb-8">
                         <div class="glass p-6 rounded-lg">
@@ -862,7 +893,7 @@
                                 <p class="text-gray-400">Based on 342 reviews</p>
                             </div>
                         </div>
-                        
+
                         <div class="space-y-3">
                             <div class="flex items-center gap-3">
                                 <span class="text-sm w-12">5 ★</span>
@@ -914,7 +945,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-300 mb-3">Excellent card for frequent travelers. The lounge access alone justifies the annual fee. Reward points accumulate quickly, especially on dining and weekend shopping. Customer service is also very responsive.</p>
+                            <p class="text-gray-300 mb-3">Excellent card for frequent travelers. The lounge access alone
+                                justifies the annual fee. Reward points accumulate quickly, especially on dining and
+                                weekend shopping. Customer service is also very responsive.</p>
                             <div class="flex gap-4 text-sm text-gray-400">
                                 <button class="hover:text-white flex items-center gap-1">
                                     <span>👍</span> Helpful (24)
@@ -928,12 +961,15 @@
                                 <div>
                                     <p class="font-semibold">Priya Sharma</p>
                                     <div class="flex items-center gap-2">
-                                        <span class="star-filled text-sm">★★★★</span><span class="star-empty text-sm">★</span>
+                                        <span class="star-filled text-sm">★★★★</span><span
+                                            class="star-empty text-sm">★</span>
                                         <span class="text-xs text-gray-400">1 week ago</span>
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-300 mb-3">Great card overall, but the annual fee is steep. Make sure you can utilize the benefits to justify the cost. The rewards program is solid and the travel perks are top-notch.</p>
+                            <p class="text-gray-300 mb-3">Great card overall, but the annual fee is steep. Make sure you
+                                can utilize the benefits to justify the cost. The rewards program is solid and the
+                                travel perks are top-notch.</p>
                             <div class="flex gap-4 text-sm text-gray-400">
                                 <button class="hover:text-white flex items-center gap-1">
                                     <span>👍</span> Helpful (18)
@@ -952,7 +988,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-300 mb-3">Best premium card in India hands down! Been using it for 2 years. The golf privileges and unlimited lounge access are incredible. Worth every penny of the annual fee.</p>
+                            <p class="text-gray-300 mb-3">Best premium card in India hands down! Been using it for 2
+                                years. The golf privileges and unlimited lounge access are incredible. Worth every penny
+                                of the annual fee.</p>
                             <div class="flex gap-4 text-sm text-gray-400">
                                 <button class="hover:text-white flex items-center gap-1">
                                     <span>👍</span> Helpful (31)
@@ -1001,11 +1039,13 @@
                                 Which credit card is best for international travel with low forex markup?
                             </h3>
                             <p class="text-gray-400 mb-4">
-                                I travel internationally 3-4 times a year. Looking for a card with minimal forex charges and good travel benefits. Should I go for Axis Magnus or HDFC Diners Black?
+                                I travel internationally 3-4 times a year. Looking for a card with minimal forex charges
+                                and good travel benefits. Should I go for Axis Magnus or HDFC Diners Black?
                             </p>
                             <div class="flex flex-wrap gap-3 mb-3">
                                 <span class="badge badge-travel">travel</span>
-                                <span class="badge" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">forex</span>
+                                <span class="badge"
+                                    style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">forex</span>
                                 <span class="badge badge-premium">premium-cards</span>
                             </div>
                             <div class="flex items-center gap-4 text-sm text-gray-400">
@@ -1032,11 +1072,13 @@
                                 Amazon Pay ICICI vs Flipkart Axis - Which offers better overall value?
                             </h3>
                             <p class="text-gray-400 mb-4">
-                                Both are lifetime free cards with good cashback. I shop equally on both platforms. Which one should I prioritize? Also, how does cashback redemption work for both?
+                                Both are lifetime free cards with good cashback. I shop equally on both platforms. Which
+                                one should I prioritize? Also, how does cashback redemption work for both?
                             </p>
                             <div class="flex flex-wrap gap-3 mb-3">
                                 <span class="badge badge-cashback">cashback</span>
-                                <span class="badge" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">comparison</span>
+                                <span class="badge"
+                                    style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">comparison</span>
                             </div>
                             <div class="flex items-center gap-4 text-sm text-gray-400">
                                 <span>Asked by <span class="text-white">Sneha Reddy</span></span>
@@ -1062,11 +1104,13 @@
                                 How to maximize reward points on HDFC Millennia credit card?
                             </h3>
                             <p class="text-gray-400 mb-4">
-                                I recently got HDFC Millennia. What are the best strategies to maximize cashback and reward points? Any hidden categories that give better rewards?
+                                I recently got HDFC Millennia. What are the best strategies to maximize cashback and
+                                reward points? Any hidden categories that give better rewards?
                             </p>
                             <div class="flex flex-wrap gap-3 mb-3">
                                 <span class="badge badge-rewards">rewards</span>
-                                <span class="badge" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">tips</span>
+                                <span class="badge"
+                                    style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">tips</span>
                             </div>
                             <div class="flex items-center gap-4 text-sm text-gray-400">
                                 <span>Asked by <span class="text-white">Rahul Verma</span></span>
@@ -1092,12 +1136,15 @@
                                 Is it worth paying ₹10,000 annual fee for premium cards?
                             </h3>
                             <p class="text-gray-400 mb-4">
-                                Cards like Axis Magnus and HDFC Diners Black charge ₹10k+ annual fee. For someone with annual spend of ₹5-6 lakhs, does it make financial sense? Break-even analysis needed.
+                                Cards like Axis Magnus and HDFC Diners Black charge ₹10k+ annual fee. For someone with
+                                annual spend of ₹5-6 lakhs, does it make financial sense? Break-even analysis needed.
                             </p>
                             <div class="flex flex-wrap gap-3 mb-3">
                                 <span class="badge badge-premium">premium-cards</span>
-                                <span class="badge" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">fees</span>
-                                <span class="badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">advice</span>
+                                <span class="badge"
+                                    style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">fees</span>
+                                <span class="badge"
+                                    style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">advice</span>
                             </div>
                             <div class="flex items-center gap-4 text-sm text-gray-400">
                                 <span>Asked by <span class="text-white">Meera Joshi</span></span>
@@ -1123,11 +1170,14 @@
                                 Credit card denied due to low credit score - how to improve quickly?
                             </h3>
                             <p class="text-gray-400 mb-4">
-                                My credit score is 680 and got rejected for SBI Card. What are the fastest ways to improve credit score? Should I start with secured credit cards?
+                                My credit score is 680 and got rejected for SBI Card. What are the fastest ways to
+                                improve credit score? Should I start with secured credit cards?
                             </p>
                             <div class="flex flex-wrap gap-3 mb-3">
-                                <span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">credit-score</span>
-                                <span class="badge" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">advice</span>
+                                <span class="badge"
+                                    style="background: rgba(239, 68, 68, 0.2); color: #ef4444;">credit-score</span>
+                                <span class="badge"
+                                    style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">advice</span>
                             </div>
                             <div class="flex items-center gap-4 text-sm text-gray-400">
                                 <span>Asked by <span class="text-white">Karthik Menon</span></span>
@@ -1151,7 +1201,7 @@
         <!-- Compare Section -->
         <div id="compare-section" class="hidden-section">
             <h2 class="text-4xl font-bold mb-8">Compare <span class="gradient-text">Credit Cards</span></h2>
-            
+
             <div class="glass p-6 rounded-lg mb-8">
                 <p class="text-gray-400 mb-4">Select up to 3 cards to compare side-by-side</p>
                 <div class="grid md:grid-cols-3 gap-4">
@@ -1299,11 +1349,13 @@
                 <div class="card p-6">
                     <div class="flex justify-between items-start mb-4">
                         <div>
-                            <h3 class="text-xl font-semibold mb-2">Which credit card do you use the most for online shopping?</h3>
-                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Conexo Team</span> • 2,847 votes • Ends in 3 days</p>
+                            <h3 class="text-xl font-semibold mb-2">Which credit card do you use the most for online
+                                shopping?</h3>
+                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Conexo Team</span> • 2,847
+                                votes • Ends in 3 days</p>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-3">
                         <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
                             <div class="flex justify-between items-center mb-2">
@@ -1315,7 +1367,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">1,082 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
                             <div class="flex justify-between items-center mb-2">
                                 <span>Flipkart Axis Bank</span>
@@ -1326,7 +1378,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">826 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
                             <div class="flex justify-between items-center mb-2">
                                 <span>HDFC Millennia</span>
@@ -1337,7 +1389,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">598 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
                             <div class="flex justify-between items-center mb-2">
                                 <span>Other</span>
@@ -1355,11 +1407,13 @@
                 <div class="card p-6">
                     <div class="flex justify-between items-start mb-4">
                         <div>
-                            <h3 class="text-xl font-semibold mb-2">What's your primary reason for choosing a credit card?</h3>
-                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Vikram Singh</span> • 4,523 votes • Ended 2 days ago</p>
+                            <h3 class="text-xl font-semibold mb-2">What's your primary reason for choosing a credit
+                                card?</h3>
+                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Vikram Singh</span> •
+                                4,523 votes • Ended 2 days ago</p>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-3">
                         <div class="glass p-4 rounded-lg">
                             <div class="flex justify-between items-center mb-2">
@@ -1371,7 +1425,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">1,900 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg">
                             <div class="flex justify-between items-center mb-2">
                                 <span>Travel Benefits</span>
@@ -1382,7 +1436,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">1,402 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg">
                             <div class="flex justify-between items-center mb-2">
                                 <span>Lounge Access</span>
@@ -1393,7 +1447,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">769 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg">
                             <div class="flex justify-between items-center mb-2">
                                 <span>No Annual Fee</span>
@@ -1412,10 +1466,11 @@
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <h3 class="text-xl font-semibold mb-2">Which bank offers the best premium credit cards?</h3>
-                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Sneha Reddy</span> • 3,156 votes • Ends in 5 days</p>
+                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Sneha Reddy</span> • 3,156
+                                votes • Ends in 5 days</p>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-3">
                         <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
                             <div class="flex justify-between items-center mb-2">
@@ -1427,7 +1482,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">1,136 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
                             <div class="flex justify-between items-center mb-2">
                                 <span>Axis Bank</span>
@@ -1438,7 +1493,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">1,041 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
                             <div class="flex justify-between items-center mb-2">
                                 <span>SBI Card</span>
@@ -1449,7 +1504,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">600 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg cursor-pointer hover:border-purple-500 transition">
                             <div class="flex justify-between items-center mb-2">
                                 <span>ICICI Bank</span>
@@ -1468,10 +1523,11 @@
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <h3 class="text-xl font-semibold mb-2">How many credit cards do you actively use?</h3>
-                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Conexo Team</span> • 5,892 votes • Ended 1 week ago</p>
+                            <p class="text-sm text-gray-400">Poll by <span class="text-white">Conexo Team</span> • 5,892
+                                votes • Ended 1 week ago</p>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-3">
                         <div class="glass p-4 rounded-lg">
                             <div class="flex justify-between items-center mb-2">
@@ -1483,7 +1539,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">2,651 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg">
                             <div class="flex justify-between items-center mb-2">
                                 <span>3-4 cards</span>
@@ -1494,7 +1550,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">1,885 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg">
                             <div class="flex justify-between items-center mb-2">
                                 <span>5+ cards</span>
@@ -1505,7 +1561,7 @@
                             </div>
                             <p class="text-xs text-gray-400 mt-1">884 votes</p>
                         </div>
-                        
+
                         <div class="glass p-4 rounded-lg">
                             <div class="flex justify-between items-center mb-2">
                                 <span>None (yet)</span>
@@ -1570,6 +1626,266 @@
     </footer>
 
     <script>
+        // Card data for all credit cards
+        const cardsData = {
+            'hdfc-diners': {
+                name: 'HDFC Diners Club Black',
+                bank: 'HDFC Bank',
+                image: 'https://www.cardexpert.in/wp-content/uploads/2018/05/hdfc_diners_clubmiles.jpg',
+                badges: ['premium', 'travel'],
+                rating: 4.8,
+                reviews: 342,
+                views: '12.4K',
+                annualFee: '₹10,000',
+                joiningFee: '₹10,000',
+                rewardRate: '3.3% on travel',
+                welcomeBonus: '10,000 points',
+                minIncome: '₹18 Lakhs/year',
+                features: [
+                    'Unlimited domestic and international lounge access',
+                    '10X reward points on dining and weekend shopping',
+                    'Golf privileges at over 1000 courses worldwide',
+                    'Buy 1 Get 1 movie tickets at BookMyShow'
+                ]
+            },
+            'amazon-icici': {
+                name: 'Amazon Pay ICICI',
+                bank: 'ICICI Bank',
+                image: 'https://m.media-amazon.com/images/G/31/img18/AmazonPay/Affordability/CBCC/Amazoncard_Final._CB570101839_.jpg',
+                badges: ['cashback'],
+                rating: 4.3,
+                reviews: 1247,
+                views: '18.2K',
+                annualFee: '₹0 (Lifetime Free)',
+                joiningFee: '₹0',
+                rewardRate: '5% on Amazon',
+                welcomeBonus: '₹500 Amazon Pay cashback',
+                minIncome: '₹3 Lakhs/year',
+                features: [
+                    '5% cashback on Amazon.in with Prime membership',
+                    '2% cashback on paying bills using Amazon Pay',
+                    '1% cashback on all other purchases',
+                    'No annual or joining fee - Lifetime free'
+                ]
+            },
+            'sbi-elite': {
+                name: 'SBI Card ELITE',
+                bank: 'State Bank of India',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYbJANI_5w_qq2-8N155rZLa32ewpWea0H9g&s',
+                badges: ['premium', 'rewards'],
+                rating: 4.5,
+                reviews: 567,
+                views: '8.7K',
+                annualFee: '₹4,999',
+                joiningFee: '₹4,999',
+                rewardRate: '5 points per ₹100',
+                welcomeBonus: '5,000 bonus points',
+                minIncome: '₹12 Lakhs/year',
+                features: [
+                    '8 complimentary lounge access per year',
+                    '5X reward points on dining, groceries and movies',
+                    'Trident Privilege membership',
+                    'Up to 25% off at partner restaurants'
+                ]
+            },
+            'axis-magnus': {
+                name: 'Axis Bank Magnus',
+                bank: 'Axis Bank',
+                image: 'https://www.cardexpert.in/wp-content/uploads/2022/05/axis_magnus_credit_card.jpg',
+                badges: ['travel'],
+                rating: 4.7,
+                reviews: 891,
+                views: '15.3K',
+                annualFee: '₹10,000',
+                joiningFee: '₹10,000',
+                rewardRate: '12 miles per ₹200',
+                welcomeBonus: '25,000 bonus miles',
+                minIncome: '₹15 Lakhs/year',
+                features: [
+                    'Unlimited domestic lounge access via Priority Pass',
+                    '8 international lounge visits per year',
+                    'Transfer miles to 15+ airline partners',
+                    'Smart buy portal for discounted vouchers'
+                ]
+            },
+            'flipkart-axis': {
+                name: 'Flipkart Axis Bank',
+                bank: 'Axis Bank',
+                image: 'https://static.bankbazaar.com/images/india/infographic/flipkart-axis-credit-card.webp',
+                badges: ['cashback'],
+                rating: 4.1,
+                reviews: 2341,
+                views: '22.1K',
+                annualFee: '₹0 (Lifetime Free)',
+                joiningFee: '₹0',
+                rewardRate: '5% on Flipkart',
+                welcomeBonus: '₹500 Flipkart voucher',
+                minIncome: '₹3 Lakhs/year',
+                features: [
+                    '5% unlimited cashback on Flipkart (with Flipkart Plus)',
+                    '4% cashback on Myntra and 2GUD',
+                    '1.5% cashback on all other purchases',
+                    'Lifetime free - No joining or annual fee'
+                ]
+            },
+            'hdfc-regalia-gold': {
+                name: 'HDFC Regalia Gold',
+                bank: 'HDFC Bank',
+                image: 'https://v.hdfcbank.com/content/dam/hdfc-aem-microsites/regalia-gold/gold-new/card01.svg',
+                badges: ['premium', 'rewards'],
+                rating: 4.6,
+                reviews: 523,
+                views: '9.4K',
+                annualFee: '₹2,500',
+                joiningFee: '₹2,500',
+                rewardRate: '4 points per ₹150',
+                welcomeBonus: '5,000 bonus points',
+                minIncome: '₹12 Lakhs/year',
+                features: [
+                    '12 complimentary lounge access per year',
+                    '2X reward points on weekend spending',
+                    'Golf privileges at select courses',
+                    '1% fuel surcharge waiver'
+                ]
+            },
+            'axis-select': {
+                name: 'Axis Bank SELECT',
+                bank: 'Axis Bank',
+                image: 'https://www.paisabazaar.com/wp-content/uploads/2015/11/Axis-Bank-Select-Credit-Card.png',
+                badges: ['premium', 'travel'],
+                rating: 4.4,
+                reviews: 678,
+                views: '7.2K',
+                annualFee: '₹3,000',
+                joiningFee: '₹3,000',
+                rewardRate: '10 points per ₹200',
+                welcomeBonus: '3,000 bonus points',
+                minIncome: '₹9 Lakhs/year',
+                features: [
+                    '8 complimentary lounge visits per year',
+                    '25% discount at partner restaurants',
+                    'Priority Pass membership for international lounges',
+                    '1% fuel surcharge waiver'
+                ]
+            },
+            'sbi-prime': {
+                name: 'SBI Prime',
+                bank: 'State Bank of India',
+                image: 'https://www.paisabazaar.com/wp-content/uploads/2019/07/SBI-Card-Prime-1.png',
+                badges: ['rewards'],
+                rating: 4.3,
+                reviews: 892,
+                views: '6.8K',
+                annualFee: '₹2,999',
+                joiningFee: '₹2,999',
+                rewardRate: '10 points per ₹100',
+                welcomeBonus: '2,000 bonus points',
+                minIncome: '₹6 Lakhs/year',
+                features: [
+                    '4 complimentary lounge access per year',
+                    '5X reward points on birthday',
+                    '1% fuel surcharge waiver',
+                    'Movie ticket offers at PVR and INOX'
+                ]
+            },
+            'amex-membership': {
+                name: 'Amex Membership Rewards',
+                bank: 'American Express',
+                image: 'https://icm.aexp-static.com/Internet/internationalcardshop/en_in/images/cards/Membership_Rewards_Card.png',
+                badges: ['premium', 'rewards'],
+                rating: 4.5,
+                reviews: 445,
+                views: '5.9K',
+                annualFee: '₹1,000',
+                joiningFee: '₹1,000',
+                rewardRate: '1000 points per ₹50',
+                welcomeBonus: '4,000 bonus points',
+                minIncome: '₹6 Lakhs/year',
+                features: [
+                    'Earn 1000 Membership Rewards points for every ₹50 spent',
+                    '18 Karat Gold Collection rewards',
+                    'Premium travel and dining benefits',
+                    'Access to exclusive Amex offers'
+                ]
+            },
+            'hdfc-swiggy': {
+                name: 'HDFC Swiggy',
+                bank: 'HDFC Bank',
+                image: 'https://www.paisabazaar.com/wp-content/uploads/2023/07/Swiggy-HDFC-Bank-Credit-Card.png',
+                badges: ['lifestyle', 'cashback'],
+                rating: 4.4,
+                reviews: 1156,
+                views: '19.5K',
+                annualFee: '₹0 (Lifetime Free)',
+                joiningFee: '₹0',
+                rewardRate: '10% on Swiggy',
+                welcomeBonus: '₹500 Swiggy cashback',
+                minIncome: '₹3 Lakhs/year',
+                features: [
+                    '10% unlimited cashback on Swiggy orders',
+                    '5% cashback on online spends',
+                    '1% cashback on all other purchases',
+                    '3 months Swiggy One membership free'
+                ]
+            },
+            'hdfc-infinia': {
+                name: 'HDFC Infinia',
+                bank: 'HDFC Bank',
+                image: 'https://www.cardexpert.in/wp-content/uploads/2021/10/hdfc-infinia-metal-edition.jpg',
+                badges: ['premium', 'travel'],
+                rating: 4.9,
+                reviews: 723,
+                views: '25.8K',
+                annualFee: '₹12,500',
+                joiningFee: '₹12,500',
+                rewardRate: '3.3% on all spends',
+                welcomeBonus: '12,500 bonus points',
+                minIncome: '₹30 Lakhs/year',
+                features: [
+                    'Unlimited domestic and international lounge access',
+                    'Complimentary Priority Pass membership',
+                    '10X reward points on SmartBuy portal',
+                    'Global concierge services 24/7'
+                ]
+            },
+            'icici-coral': {
+                name: 'ICICI Coral',
+                bank: 'ICICI Bank',
+                image: 'https://campaigns.icicibank.com/credit-card/coralCreditCard/imagesinst/Asset-1.webp',
+                badges: ['lifestyle'],
+                rating: 4.3,
+                reviews: 967,
+                views: '11.2K',
+                annualFee: '₹500',
+                joiningFee: '₹500',
+                rewardRate: '2 points per ₹100',
+                welcomeBonus: '1,000 bonus points',
+                minIncome: '₹4 Lakhs/year',
+                features: [
+                    '2 complimentary lounge visits per quarter',
+                    'Buy 1 Get 1 on movie tickets (up to 4/month)',
+                    '15% discount at partner restaurants',
+                    '1% fuel surcharge waiver'
+                ]
+            }
+        };
+
+        // Badge class mapping
+        const badgeClasses = {
+            'premium': 'badge badge-premium',
+            'travel': 'badge badge-travel',
+            'cashback': 'badge badge-cashback',
+            'rewards': 'badge badge-rewards',
+            'lifestyle': 'badge" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;'
+        };
+
+        // Generate star rating HTML
+        function generateStars(rating) {
+            const fullStars = Math.floor(rating);
+            const emptyStars = 5 - fullStars;
+            return '★'.repeat(fullStars) + (emptyStars > 0 ? '<span class="star-empty">' + '★'.repeat(emptyStars) + '</span>' : '');
+        }
+
         // Section navigation
         function showSection(sectionName) {
             // Hide all sections
@@ -1577,40 +1893,78 @@
                 section.classList.remove('active-section');
                 section.classList.add('hidden-section');
             });
-            
+
             // Also hide card detail if it exists
             const cardDetail = document.getElementById('card-detail');
             if (cardDetail) {
                 cardDetail.classList.remove('active-section');
                 cardDetail.classList.add('hidden-section');
             }
-            
+
             // Show selected section
             const section = document.getElementById(sectionName + '-section');
             if (section) {
                 section.classList.remove('hidden-section');
                 section.classList.add('active-section');
             }
-            
+
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Show card detail
         function showCardDetail(cardId) {
+            const card = cardsData[cardId];
+            if (!card) {
+                console.error('Card not found:', cardId);
+                return;
+            }
+
+            // Populate card detail elements
+            document.getElementById('detail-card-image').src = card.image;
+            document.getElementById('detail-card-image').alt = card.name;
+            document.getElementById('detail-card-name').textContent = card.name;
+            document.getElementById('detail-bank-name').textContent = card.bank;
+            document.getElementById('detail-stars').innerHTML = generateStars(card.rating);
+            document.getElementById('detail-rating-text').textContent = `${card.rating} out of 5 (${card.reviews} reviews)`;
+            document.getElementById('detail-views').textContent = card.views;
+            document.getElementById('detail-annual-fee').textContent = card.annualFee;
+            document.getElementById('detail-joining-fee').textContent = card.joiningFee;
+            document.getElementById('detail-reward-rate').textContent = card.rewardRate;
+            document.getElementById('detail-welcome-bonus').textContent = card.welcomeBonus;
+            document.getElementById('detail-min-income').textContent = card.minIncome;
+
+            // Populate badges
+            const badgesContainer = document.getElementById('detail-badges');
+            badgesContainer.innerHTML = card.badges.map(badge => {
+                if (badge === 'lifestyle') {
+                    return `<span class="badge" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;">Lifestyle</span>`;
+                }
+                return `<span class="badge badge-${badge}">${badge.charAt(0).toUpperCase() + badge.slice(1)}</span>`;
+            }).join('');
+
+            // Populate features
+            const featuresContainer = document.getElementById('detail-features');
+            featuresContainer.innerHTML = card.features.map(feature => `
+                <li class="flex items-start gap-2">
+                    <span class="text-green-400 mt-1">✓</span>
+                    <span>${feature}</span>
+                </li>
+            `).join('');
+
             // Hide all sections
             document.querySelectorAll('[id$="-section"]').forEach(section => {
                 section.classList.remove('active-section');
                 section.classList.add('hidden-section');
             });
-            
+
             // Show card detail
             const cardDetail = document.getElementById('card-detail');
             if (cardDetail) {
                 cardDetail.classList.remove('hidden-section');
                 cardDetail.classList.add('active-section');
             }
-            
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1618,7 +1972,7 @@
         function filterCards() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const cards = document.querySelectorAll('.card-item');
-            
+
             cards.forEach(card => {
                 const cardText = card.textContent.toLowerCase();
                 if (cardText.includes(searchTerm)) {
@@ -1635,11 +1989,11 @@
             currentCategory = category;
             const cards = document.querySelectorAll('.card-item');
             const chips = document.querySelectorAll('.filter-chip');
-            
+
             // Update active chip
             chips.forEach(chip => chip.classList.remove('active'));
             event.target.classList.add('active');
-            
+
             // Filter cards
             cards.forEach(card => {
                 if (category === 'all') {
@@ -1657,10 +2011,11 @@
 
         // Upvote functionality
         document.querySelectorAll('.upvote-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 this.classList.toggle('active');
             });
         });
     </script>
 </body>
+
 </html>
