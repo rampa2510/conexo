@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,41 +8,41 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background: #0a0e27;
             color: #fff;
             overflow-x: hidden;
         }
-        
+
         .gradient-text {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        
+
         .card-gradient {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b0764 100%);
         }
-        
+
         .glass {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .credit-card {
             width: 340px;
             height: 230px;
@@ -53,11 +54,11 @@
             transform-style: preserve-3d;
             transition: transform 0.6s ease;
         }
-        
+
         .credit-card:hover {
             transform: rotateY(10deg) rotateX(5deg);
         }
-        
+
         .chip {
             width: 50px;
             height: 40px;
@@ -65,7 +66,7 @@
             border-radius: 8px;
             position: relative;
         }
-        
+
         .chip::before {
             content: '';
             position: absolute;
@@ -77,12 +78,12 @@
             border: 2px solid rgba(0, 0, 0, 0.1);
             border-radius: 4px;
         }
-        
+
         .parallax-container {
             position: relative;
             overflow: hidden;
         }
-        
+
         .parallax-bg {
             position: absolute;
             top: 0;
@@ -90,15 +91,22 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 50%, rgba(118, 75, 162, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 80% 50%, rgba(118, 75, 162, 0.15) 0%, transparent 50%);
             animation: float 20s ease-in-out infinite;
         }
-        
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-20px) scale(1.05); }
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+            }
+
+            50% {
+                transform: translateY(-20px) scale(1.05);
+            }
         }
-        
+
         .feature-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
@@ -109,7 +117,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .feature-card::before {
             content: '';
             position: absolute;
@@ -121,32 +129,39 @@
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
-        
+
         .feature-card:hover {
             transform: translateY(-8px);
             border-color: rgba(102, 126, 234, 0.3);
             box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
         }
-        
+
         .feature-card:hover::before {
             transform: scaleX(1);
         }
-        
+
         .pulse {
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
-        
+
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
         }
-        
+
         .glow {
             box-shadow: 0 0 20px rgba(102, 126, 234, 0.5),
-                        0 0 40px rgba(102, 126, 234, 0.3),
-                        0 0 60px rgba(102, 126, 234, 0.2);
+                0 0 40px rgba(102, 126, 234, 0.3),
+                0 0 60px rgba(102, 126, 234, 0.2);
         }
-        
+
         .stat-number {
             font-size: 3rem;
             font-weight: 800;
@@ -155,31 +170,39 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .scroll-indicator {
             animation: bounce 2s infinite;
         }
-        
+
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
         }
-        
+
         .grid-bg {
-            background-image: 
+            background-image:
                 linear-gradient(rgba(102, 126, 234, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(102, 126, 234, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
         }
     </style>
 </head>
+
 <body class="grid-bg">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 glass">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
-                    <span class="text-white font-bold text-xl">C</span>
+                    <span class="text-white font-bold text-xl">N</span>
                 </div>
                 <span class="text-2xl font-bold gradient-text">NEXO</span>
             </div>
@@ -190,7 +213,8 @@
                 <a href="#power" class="text-gray-300 hover:text-white transition">Power</a>
                 <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
             </div>
-            <button class="gradient-bg px-6 py-2 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition">
+            <button
+                class="gradient-bg px-6 py-2 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition">
                 Get Started
             </button>
         </div>
@@ -211,13 +235,16 @@
                         on credit cards
                     </h1>
                     <p class="text-xl text-gray-400 mb-8 leading-relaxed">
-                        Become the core data engine of the credit card ecosystem — generating, owning, and powering insights that shape the market.
+                        Become the core data engine of the credit card ecosystem — generating, owning, and powering
+                        insights that shape the market.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="product.html" class="gradient-bg px-8 py-4 rounded-full text-white font-semibold hover:shadow-2xl hover:shadow-purple-500/50 transition transform hover:scale-105 glow inline-block">
+                        <a href="product.html"
+                            class="gradient-bg px-8 py-4 rounded-full text-white font-semibold hover:shadow-2xl hover:shadow-purple-500/50 transition transform hover:scale-105 glow inline-block">
                             Explore the Data →
                         </a>
-                        <button class="glass px-8 py-4 rounded-full text-white font-semibold hover:border-purple-500 transition">
+                        <button
+                            class="glass px-8 py-4 rounded-full text-white font-semibold hover:border-purple-500 transition">
                             Learn More
                         </button>
                     </div>
@@ -283,7 +310,8 @@
                     To Nail the <span class="gradient-text">Connect</span> in Nexo
                 </h2>
                 <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                    Create proprietary, structured data around credit cards — making Nexo the single source of truth for credit card intelligence.
+                    Create proprietary, structured data around credit cards — making Nexo the single source of truth for
+                    credit card intelligence.
                 </p>
             </div>
         </div>
@@ -295,57 +323,63 @@
             <h2 class="text-5xl font-black text-center mb-20">
                 Our <span class="gradient-text">Superpowers</span>
             </h2>
-            
+
             <div class="grid md:grid-cols-2 gap-8 mb-8">
                 <div class="feature-card">
                     <div class="text-4xl mb-4">🧠</div>
                     <h3 class="text-2xl font-bold mb-4">Encyclopaedia of Credit Cards</h3>
                     <p class="text-gray-400 leading-relaxed">
-                        Cover every credit card — new launches, features, rewards, and benefits. Constantly updated and verified information. Build the most complete dataset in the industry.
+                        Cover every credit card — new launches, features, rewards, and benefits. Constantly updated and
+                        verified information. Build the most complete dataset in the industry.
                     </p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="text-4xl mb-4">💡</div>
                     <h3 class="text-2xl font-bold mb-4">Generate Original Data</h3>
                     <p class="text-gray-400 leading-relaxed">
-                        Move beyond listing or scraping. Collect first-party data through user behaviour, engagement, and research. Unlock unique insights and market trends.
+                        Move beyond listing or scraping. Collect first-party data through user behaviour, engagement,
+                        and research. Unlock unique insights and market trends.
                     </p>
                 </div>
             </div>
-            
+
             <div class="grid md:grid-cols-2 gap-8 mb-8">
                 <div class="feature-card">
                     <div class="text-4xl mb-4">⚙️</div>
                     <h3 class="text-2xl font-bold mb-4">Business Intelligence & Negotiation</h3>
                     <p class="text-gray-400 leading-relaxed">
-                        Solve for data asymmetry. Build negotiation power through superior data ownership. Become a must-have data partner for financial institutions.
+                        Solve for data asymmetry. Build negotiation power through superior data ownership. Become a
+                        must-have data partner for financial institutions.
                     </p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="text-4xl mb-4">🔓</div>
                     <h3 class="text-2xl font-bold mb-4">Frictionless Experience</h3>
                     <p class="text-gray-400 leading-relaxed">
-                        No forced sign-ups. Google login for community. DSA activates only when you choose to interact — ensuring full control and transparency.
+                        No forced sign-ups. Google login for community. DSA activates only when you choose to interact —
+                        ensuring full control and transparency.
                     </p>
                 </div>
             </div>
-            
+
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="feature-card">
                     <div class="text-4xl mb-4">🧭</div>
                     <h3 class="text-2xl font-bold mb-4">AI-Driven Intelligence</h3>
                     <p class="text-gray-400 leading-relaxed">
-                        Auto-index and categorise by usage patterns, rewards optimization, and category relevance. AI-driven comparison and insight generation.
+                        Auto-index and categorise by usage patterns, rewards optimization, and category relevance.
+                        AI-driven comparison and insight generation.
                     </p>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="text-4xl mb-4">📈</div>
                     <h3 class="text-2xl font-bold mb-4">SEO Dominance</h3>
                     <p class="text-gray-400 leading-relaxed">
-                        Rank across all credit card-related search intents. Be the default discovery engine. Use traffic as a data generation flywheel.
+                        Rank across all credit card-related search intents. Be the default discovery engine. Use traffic
+                        as a data generation flywheel.
                     </p>
                 </div>
             </div>
@@ -360,7 +394,7 @@
                     What Makes Us <span class="gradient-text">Different</span>
                 </h2>
             </div>
-            
+
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="feature-card text-center">
                     <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 glow">
@@ -368,20 +402,22 @@
                     </div>
                     <h3 class="text-2xl font-bold mb-4">No Direct Selling</h3>
                     <p class="text-gray-400">
-                        No affiliate or commission bias. Data integrity is the core business model. Pure, unbiased intelligence.
+                        No affiliate or commission bias. Data integrity is the core business model. Pure, unbiased
+                        intelligence.
                     </p>
                 </div>
-                
+
                 <div class="feature-card text-center">
                     <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 glow">
                         <span class="text-3xl font-bold">2</span>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Community as Data Source</h3>
                     <p class="text-gray-400">
-                        Not the product. Engagement exists to generate insights. Every interaction contributes to data enrichment.
+                        Not the product. Engagement exists to generate insights. Every interaction contributes to data
+                        enrichment.
                     </p>
                 </div>
-                
+
                 <div class="feature-card text-center">
                     <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-6 glow">
                         <span class="text-3xl font-bold">3</span>
@@ -400,13 +436,14 @@
         <div class="max-w-4xl mx-auto px-6 text-center">
             <div class="glass rounded-3xl p-16">
                 <div class="text-6xl font-black mb-8">
-                    <span class="gradient-text">NEXO</span> = 
+                    <span class="gradient-text">NEXO</span> =
                 </div>
                 <div class="text-3xl font-bold mb-4">
                     Data Generation × Credit Card Intelligence × Market Power
                 </div>
                 <p class="text-xl text-gray-400 mt-8">
-                    Not just connecting data — creating it, owning it, and shaping the future of the credit card ecosystem.
+                    Not just connecting data — creating it, owning it, and shaping the future of the credit card
+                    ecosystem.
                 </p>
             </div>
         </div>
@@ -421,7 +458,8 @@
             <p class="text-xl text-gray-400 mb-12">
                 Join us in building the world's most comprehensive credit card intelligence platform.
             </p>
-            <button class="gradient-bg px-12 py-5 rounded-full text-white text-lg font-bold hover:shadow-2xl hover:shadow-purple-500/50 transition transform hover:scale-105 glow">
+            <button
+                class="gradient-bg px-12 py-5 rounded-full text-white text-lg font-bold hover:shadow-2xl hover:shadow-purple-500/50 transition transform hover:scale-105 glow">
                 Start Your Journey →
             </button>
         </div>
@@ -433,7 +471,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="flex items-center space-x-2 mb-4 md:mb-0">
                     <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-xl">C</span>
+                        <span class="text-white font-bold text-xl">N</span>
                     </div>
                     <span class="text-2xl font-bold gradient-text">NEXO</span>
                 </div>
@@ -488,4 +526,5 @@
         });
     </script>
 </body>
+
 </html>
